@@ -17,7 +17,6 @@ public class Operation extends TimedRobot {
     private Joystick xboxController; // Xbox Controller
 
     // constants for xbox controller button/axis
-    private static final int LEFT_STICK_X = 1; // X-axis of left stick
     private static final int BUTTON_Y = 4; // Y button
 
     @Override 
@@ -39,16 +38,7 @@ public class Operation extends TimedRobot {
     public void teleopPeriodic() {
 
         // get the X-Axis value of the left stick (range: -1.0 to 1.0)
-        double speed = xboxController.getRawAxis(LEFT_STICK_X); 
         boolean isYPressed = xboxController.getRawButton(BUTTON_Y);
-
-
-        speed = -speed; // Invert speed to match stick direction
-   
-        // implement deadband to ignore small movements of joystick
-        if(Math.abs(speed) < 0.05) {
-            speed = 0;
-        }
 
         // set motor speed 
          neoMotor.setVoltage(6.0);
